@@ -1,4 +1,4 @@
-  .enter{
+  /* .enter{
   opacity:0;
   }
 
@@ -15,4 +15,19 @@
     opacity:0;
     transition: all 250ms linear;
 
+  } */
+
+
+  .appear{
+    opacity:0;
+    transform: scale(0.1);
   }
+
+  .appearActive{
+    opacity:1;
+    transform: scale(1);
+    transition: all 500ms linear;
+  }
+
+ 
+

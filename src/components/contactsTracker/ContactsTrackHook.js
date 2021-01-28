@@ -80,27 +80,29 @@ const ContactsTrackerHook=()=> {
 
     return (
       <>
-        <CSSTransition
-          in={doubledName.length>0}
-          timeout={250}
-          classNames={notificationStyles}
-          unmountOnExit>
+        {doubledName.length>0 &&
+          <CSSTransition
+            in={true}
+            timeout={250}
+            classNames={notificationStyles}
+            appear>
           <Notification name={doubledName} resetName={resetName}/>
-        </CSSTransition>
+        </CSSTransition>}
 
         <ContactForm onAddContact = {addContact}/>
 
         <h2>Contacts</h2>
 
+        {contacts.length>1 &&
         <CSSTransition
-          in={contacts.length>1}
-          timeout={250}
+          in={true}
+          timeout={500}
           classNames={filterStyles}
-          unmountOnExit>
+          appear>
           <Filter value={filter} onChangeFilter = {changeFilter}/>
-        </CSSTransition>
+        </CSSTransition>}
 
-        <CSSTransition
+        {<CSSTransition
           in={getVisibleContacts().length >0}
           unmountOnExit
           timeout={250}
@@ -108,8 +110,7 @@ const ContactsTrackerHook=()=> {
           >
           <ContactList contacts = {getVisibleContacts()} onRemoveContact = {removeContact}
           onUpdateContact = {updateContact}/>
-        </CSSTransition>
-
+        </CSSTransition>}
 
       </>
     )
